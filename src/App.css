@@ -17,3 +17,91 @@ header {
   margin-bottom: 40px;
 }
 
+.box {
+  width: 30%;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.box > input {
+  flex: 1;
+  height: 50px;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  padding-left: 10px;
+}
+
+.arrowIcon {
+  width: 3.5rem;
+  padding: 5px;
+  height: 60px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: black;
+  color: #fff;
+  font-size: 2rem;
+}
+
+section {
+  height: calc(100% - 37vh);
+}
+
+.leaflet-container {
+  height: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+  .box {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .appTitle {
+    font-size: 3rem;
+  }
+
+  .box {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 796px) {
+  .appTitle {
+    font-size: 1.8rem;
+  }
+
+  .box {
+    width: 80%;
+    height: 50px;
+  }
+
+  .box > input {
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .arrowIcon {
+    width: 2.4rem;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .appTitle {
+    font-size: 1.5rem;
+  }
+
+  .box {
+    width: 90%
+  }
+}
+
+
+
