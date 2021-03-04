@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  height: 37vh;
+  height: 40vh;
   background-image: url("./images/pattern-bg.png");
   background-size: cover;
 
@@ -48,11 +48,41 @@ header {
 }
 
 section {
-  height: calc(100% - 37vh);
+  height: calc(100% - 40vh);
 }
 
 .leaflet-container {
   height: 100%;
+  z-index: 1;
+}
+
+.results {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  z-index: 99;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultItem {
+  flex-basis: 25%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid gray;
+}
+
+.resultItem:last-child {
+  border: none;
 }
 
 @media screen and (max-width: 1300px) {
@@ -68,6 +98,11 @@ section {
 
   .box {
     width: 60%;
+  }
+
+  .results {
+    width: 65%;
+    height: 100px;
   }
 }
 
@@ -91,6 +126,18 @@ section {
     height: 50px;
     font-size: 1.3rem;
   }
+
+  .results {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .results {
+    flex-direction: column;
+    width: 50%;
+    height: 250px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -99,9 +146,6 @@ section {
   }
 
   .box {
-    width: 90%
+    width: 90%;
   }
 }
-
-
-
