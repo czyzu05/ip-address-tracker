@@ -3,8 +3,8 @@ import L from "leaflet";
 import mapPin from "../images/mapPin.png";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-const Map = () => {
-  const position = [50.061, 19.93];
+const Map = ({ lat, lng }) => {
+  const position = [lat, lng];
 
   const mapIcon = L.icon({
     iconUrl: `${mapPin}`,

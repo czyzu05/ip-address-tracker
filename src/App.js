@@ -11,6 +11,9 @@ import { BeatLoader } from "react-spinners";
 const App = () => {
   const [ipDetails, setIpDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [addressIp, setAddressIp] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
 
   const override = css`
     position: absolute;
@@ -25,8 +28,11 @@ const App = () => {
         "https://geo.ipify.org/api/v1?apiKey=at_ZWKzYUZKAzmM4UgDjLGmuKXgGtCML"
       )
       .then((res) => {
+        setLatitude(res.data.location.lat);
+        setLongitude(res.data.location.lng);
         setIpDetails(res.data);
         setLoading(false);
+        setAddressIp(res.data.ip);
       });
   }, []);
 
@@ -38,10 +44,13 @@ const App = () => {
         <>
           <header>
             <Header>IP Address Tracker</Header>
-            <Input />
+            <Input
+              addressIp={addressIp}
+              handleAddressIpChange={(e) => setAddressIp(e.target.value)}
+            />
           </header>
           <section>
-            <Map />
+            <Map lat={latitude} lng={longitude} />
           </section>
           <ResultDetails {...ipDetails} />
         </>
