@@ -2,7 +2,7 @@ import React from "react";
 import { IconContext } from "react-icons";
 import { BsArrowRight } from "react-icons/bs";
 
-const Input = ({ addressIp, handleAddressIpChange }) => {
+const Input = ({ addressIp, handleAddressIpChange, handleToggleSearchFlag }) => {
   return (
     <div className="box">
       <input
@@ -12,7 +12,7 @@ const Input = ({ addressIp, handleAddressIpChange }) => {
         onChange={handleAddressIpChange}
       />
       <IconContext.Provider value={{ className: "arrowIcon" }}>
-        <BsArrowRight />
+        <BsArrowRight  onClick={handleToggleSearchFlag}/>
       </IconContext.Provider>
     </div>
   );

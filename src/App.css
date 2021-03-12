@@ -10,6 +10,13 @@ header {
   align-items: center;
 }
 
+header p {
+  display: inline-block;
+  margin-top: 20px;
+  color: #000;
+  font-size: 1.5rem;
+}
+
 .appTitle {
   font-size: 2.4rem;
   color: white;
@@ -45,6 +52,7 @@ header {
   background-color: black;
   color: #fff;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 section {
@@ -79,6 +87,13 @@ section {
   display: flex;
   flex-direction: column;
   border-right: 1px solid gray;
+  text-align: center;
+}
+
+.resultItem p:first-child {
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 .resultItem:last-child {
@@ -137,6 +152,15 @@ section {
     flex-direction: column;
     width: 50%;
     height: 250px;
+  }
+  .resultItem {
+    border-right: none;
+    border-bottom: 1px solid gray;
+    padding-top: 5px;
+  }
+
+  header p {
+    font-size: 1rem;
   }
 }
 

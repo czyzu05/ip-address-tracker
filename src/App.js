@@ -14,6 +14,8 @@ const App = () => {
   const [addressIp, setAddressIp] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [searchFlag, setSearchFlag] = useState(false);
+  const [errMsg, setErrMsg] = useState(null);
 
   const override = css`
     position: absolute;
@@ -21,6 +23,13 @@ const App = () => {
     left: 50%;
     transform: translate(-50%, -50%);
   `;
+
+  const handleError = (err) => {
+    if (err.response.status === 422) {
+      setErrMsg("Please enter valid ip address");
+    }
+    console.log(err);
+  };
 
   useEffect(() => {
     axios
@@ -36,6 +45,25 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://geo.ipify.org/api/v1?apiKey=at_ZWKzYUZKAzmM4UgDjLGmuKXgGtCML&ipAddress=${addressIp}`
+      )
+      .then((res) => {
+        setIpDetails(res.data);
+        setLoading(false);
+        setLatitude(res.data.location.lat);
+        setLongitude(res.data.location.lng);
+        setErrMsg(null);
+      })
+      .catch(handleError);
+  }, [searchFlag]);
+
+  const handleToggleSearchFlag = () => {
+    setSearchFlag(!searchFlag);
+  };
+
   return (
     <>
       {loading ? (
@@ -46,8 +74,14 @@ const App = () => {
             <Header>IP Address Tracker</Header>
             <Input
               addressIp={addressIp}
+              handleToggleSearchFlag={handleToggleSearchFlag}
               handleAddressIpChange={(e) => setAddressIp(e.target.value)}
             />
+            {errMsg ? (
+              <p>{errMsg}</p>
+            ) : (
+              <p>Please click on the map to center </p>
+            )}
           </header>
           <section>
             <Map lat={latitude} lng={longitude} />
